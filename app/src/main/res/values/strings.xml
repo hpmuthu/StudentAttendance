@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Student Attendance</string>
+
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="register_no">Register Number</string>
+    <string name="system_no">System Number</string>
+    <string name="in_time">In Time</string>
+    <string name="out_time">Out Time</string>
+    <string name="login_fingerprint_hint">Login with fingerprint</string>
+    <string name="new_user">New User?</string>
+    <string name="register_here">Register Here</string>
+</resources>

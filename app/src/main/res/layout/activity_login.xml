@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/loginTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/login_title_textsize" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/nameEditTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/systemNumberEditTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/systemNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/system_no"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/fingerPrintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fingerprint_bg"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_15">
+
+            <ImageView
+                android:id="@+id/fingerPrintImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_fingerprint" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loginHintTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_fingerprint_hint"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/login_hint_textsize"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/registerationLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/padding_5"
+                android:text="@string/new_user"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/register_hint_textsize" />
+
+            <TextView
+                android:id="@+id/registerationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_here"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/register_hint_textsize" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

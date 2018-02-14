@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="logo_title_textsize">24sp</dimen>
+    <dimen name="login_title_textsize">24sp</dimen>
+    <dimen name="login_hint_textsize">15sp</dimen>
+    <dimen name="register_hint_textsize">17sp</dimen>
+
+    <dimen name="padding_5">5dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
+    <dimen name="padding_25">25dp</dimen>
+</resources>
