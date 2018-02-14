@@ -10,6 +10,10 @@
     <string name="in_time">In Time</string>
     <string name="out_time">Out Time</string>
     <string name="login_fingerprint_hint">Login with fingerprint</string>
+    <string name="register_fingerprint_hint">Register with fingerprint</string>
     <string name="new_user">New User?</string>
     <string name="register_here">Register Here</string>
+    <string name="enter_name">Enter your name</string>
+    <string name="enter_register_no">Enter your register number</string>
+    <string name="enter_system_no">Enter your system number</string>
 </resources>

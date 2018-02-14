@@ -25,7 +25,8 @@
             android:screenOrientation="portrait">
             d
         </activity>
-        <activity android:name=".activity.DashboardActivity"></activity>
+        <activity android:name=".activity.DashboardActivity" />
+        <activity android:name=".activity.RegisterActivity"></activity>
     </application>
 
 </manifest>
