@@ -65,7 +65,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         String action = mBundle.getString("action").toLowerCase();
         if(action.equalsIgnoreCase("login")) {
-            long userId = myPref.getLongValue("userId");
+            long userId = mBundle.getLong("userId");
             Date currentDate = new Date();
 
             LogModel logModel = new LogModel();
