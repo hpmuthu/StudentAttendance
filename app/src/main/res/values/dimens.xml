@@ -2,8 +2,18 @@
 <resources>
     <dimen name="logo_title_textsize">24sp</dimen>
     <dimen name="login_title_textsize">21sp</dimen>
+    <dimen name="screen_title_textsize">18sp</dimen>
     <dimen name="login_hint_textsize">15sp</dimen>
     <dimen name="register_hint_textsize">17sp</dimen>
+    <dimen name="dashboard_name_textsize">17sp</dimen>
+    <dimen name="dashboard_date_textsize">14sp</dimen>
+
+    <dimen name="searchedittext_textsize">12sp</dimen>
+    <dimen name="searchbutton_textsize">12sp</dimen>
+    <dimen name="searchbutton_margintop">5dp</dimen>
+    <dimen name="searchedittext_padding">3dp</dimen>
+    <dimen name="searchbutton_verticalpadding">3dp</dimen>
+    <dimen name="searchbutton_horizontalpadding">7dp</dimen>
 
     <dimen name="padding_5">5dp</dimen>
     <dimen name="padding_10">10dp</dimen>

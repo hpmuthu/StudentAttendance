@@ -10,4 +10,11 @@
     <color name="colorBlack">#000000</color>
     <color name="colorRed">#FF0000</color>
     <color name="textview_color">#777777</color>
+    <color name="fingerprint_bg">#263237</color>
+    <color name="fingerprint_text_primary">#f5f5f5</color>
+    <color name="fingerprint_text_primarydark">#95aab4</color>
+    <color name="errorText">#ff7878</color>
+    <color name="theme_red">#ff7878</color>
+    <color name="search_button_color">#26A69A</color>
+
 </resources>

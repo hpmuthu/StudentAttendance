@@ -9,10 +9,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vittal.studentattendance.R;
 import com.example.vittal.studentattendance.base.BaseActivity;
+import com.example.vittal.studentattendance.database.StudentModel;
+import com.example.vittal.studentattendance.database.StudentModel_Table;
 import com.example.vittal.studentattendance.helper.PreferencesManager;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
@@ -122,7 +126,33 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             systemNumberEditText.setError(getResources().getString(R.string.enter_system_no));
             systemNumberEditText.requestFocus();
         } else {
-            //login functionality
+            //register functionality
+            StudentModel student1 = SQLite.select()
+                    .from(StudentModel.class)
+                    .where(StudentModel_Table.system_number.eq(systemNumber))
+                    .querySingle();
+
+            if(student1 != null) {
+                Toast.makeText(this, getResources().getString(R.string.registerno_already_exists), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            StudentModel student2 = SQLite.select()
+                    .from(StudentModel.class)
+                    .where(StudentModel_Table.system_number.eq(systemNumber))
+                    .querySingle();
+
+            if(student2 != null) {
+                Toast.makeText(this, getResources().getString(R.string.systemno_already_exists), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Intent i = new Intent(this, FingerprintActivity.class);
+            i.putExtra("action", "register");
+            i.putExtra("name", name);
+            i.putExtra("registerNumber", registerNumber);
+            i.putExtra("systemNumber", systemNumber);
+            startActivity(i);
         }
     }
 
