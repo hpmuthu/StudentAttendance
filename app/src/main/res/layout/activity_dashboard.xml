@@ -23,20 +23,193 @@
             android:id="@+id/actionBarTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/backImageView"
             android:text="@string/app_name"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/login_title_textsize" />
+            android:textSize="@dimen/screen_title_textsize"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/searchImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/logoutImageView"
+            android:src="@drawable/search_icon_black" />
+
+        <ImageView
+            android:id="@+id/logoutImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_logout" />
 
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/studentsListView"
+    <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/headerLayout"
-        android:scrollbars="none" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/searchLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/searchInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/searchStudentLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/search_edittext_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/searchedittext_padding"
+                    android:paddingRight="@dimen/searchedittext_padding"
+                    android:paddingTop="@dimen/searchedittext_padding">
+
+                    <ImageView
+                        android:id="@+id/searchStudentImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/search_icon_gray" />
+
+                    <EditText
+                        android:id="@+id/searchStudentEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="@string/search_hint"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/searchedittext_textsize" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/searchStartDateLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/search_edittext_background"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/searchedittext_padding"
+                        android:paddingLeft="@dimen/searchedittext_padding"
+                        android:paddingTop="@dimen/searchedittext_padding">
+
+                        <TextView
+                            android:id="@+id/searchStartDateTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="@string/start_date"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/searchedittext_textsize" />
+
+                        <ImageView
+                            android:id="@+id/searchStartDateImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/calendar" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/searchEndDateLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/search_edittext_background"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/searchedittext_padding"
+                        android:paddingLeft="@dimen/searchedittext_padding"
+                        android:paddingTop="@dimen/searchedittext_padding">
+
+                        <TextView
+                            android:id="@+id/searchEndDateTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="@string/end_date"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/searchedittext_textsize" />
+
+                        <ImageView
+                            android:id="@+id/searchEndDateImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/calendar" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/searchButtonLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/search_button_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/searchbutton_verticalpadding"
+                android:paddingLeft="@dimen/searchbutton_horizontalpadding"
+                android:paddingRight="@dimen/searchbutton_horizontalpadding"
+                android:paddingTop="@dimen/searchbutton_verticalpadding">
+
+                <ImageView
+                    android:id="@+id/searchButtonImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/searchbutton_margintop"
+                    android:text="@string/search"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/searchbutton_textsize" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/studentsListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerLayout"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollbars="none" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

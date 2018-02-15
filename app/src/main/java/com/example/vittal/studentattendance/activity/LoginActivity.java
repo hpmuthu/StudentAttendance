@@ -1,17 +1,25 @@
 package com.example.vittal.studentattendance.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.design.widget.TextInputLayout;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vittal.studentattendance.R;
 import com.example.vittal.studentattendance.base.BaseActivity;
+import com.example.vittal.studentattendance.database.StudentModel;
+import com.example.vittal.studentattendance.database.StudentModel_Table;
 import com.example.vittal.studentattendance.helper.PreferencesManager;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -44,6 +52,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setDynamicViews();
         setOnClickListeners();
         defaultFunctionality();
+        askPermission();
     }
 
     private void initializeViews() {
@@ -111,6 +120,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             systemNumberEditText.requestFocus();
         } else {
             //login functionality
+            StudentModel student = SQLite.select()
+                    .from(StudentModel.class)
+                    .where(StudentModel_Table.name.eq(name))
+                    .and(StudentModel_Table.system_number.eq(systemNumber))
+                    .querySingle();
+
+            if(student != null) {
+                long userId = student.get_id();
+                Intent i = new Intent(this, FingerprintActivity.class);
+                i.putExtra("action", "login");
+                i.putExtra("userId", userId);
+                startActivity(i);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.enter_valid_name_systemno), Toast.LENGTH_SHORT).show();
+            }
+
         }
 
     }
@@ -129,6 +154,42 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.registerationTextView:
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
+        }
+    }
+
+    private void askPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.USE_FINGERPRINT)) {
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.USE_FINGERPRINT
+                        }, 1);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+        switch (requestCode) {
+            case 1: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
         }
     }
 }

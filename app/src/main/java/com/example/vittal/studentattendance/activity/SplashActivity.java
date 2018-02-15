@@ -76,7 +76,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void navigateLoginSuccessScreen() {
-        if (!myPref.getStringValue("userId").equals("")) {
+        if (myPref.getLongValue("userId") > 0) {
             Intent j = new Intent(SplashActivity.this, DashboardActivity.class);
             j.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(j);
