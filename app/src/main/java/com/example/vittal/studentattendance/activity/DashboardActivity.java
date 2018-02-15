@@ -182,6 +182,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                                             .from(StudentModel.class)
                                             .leftOuterJoin(LogModel.class)
                                             .on(StudentModel_Table._id.withTable().eq(LogModel_Table.user_id.withTable()))
+                                            .orderBy(LogModel_Table._id.withTable(), false)
                                             .queryCustomList(StudentLogJoined.class);
 
         if(studentLogList.size() > 0) {
@@ -232,6 +233,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                     .leftOuterJoin(LogModel.class)
                     .on(StudentModel_Table._id.withTable().eq(LogModel_Table.user_id.withTable()))
                     .where(conditionGroup)
+                    .orderBy(LogModel_Table._id.withTable(), false)
                     .queryCustomList(StudentLogJoined.class);
 
             adapter = new StudentListAdapter(this, studentLogList, width, height);
