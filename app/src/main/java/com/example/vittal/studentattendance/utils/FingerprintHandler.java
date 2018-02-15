@@ -88,6 +88,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             Toast.makeText(context, context.getResources().getString(R.string.loging_success), Toast.LENGTH_LONG).show();
             ((Activity) context).finish();
             Intent intent = new Intent(context, DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             context.startActivity(intent);
 
         } else if(action.equalsIgnoreCase("register")) {
@@ -131,6 +132,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             Toast.makeText(context, context.getResources().getString(R.string.register_success), Toast.LENGTH_LONG).show();
             ((Activity) context).finish();
             Intent intent = new Intent(context, DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             context.startActivity(intent);
         } else if(action.equalsIgnoreCase("logout")) {
             long userId = myPref.getLongValue("userId");

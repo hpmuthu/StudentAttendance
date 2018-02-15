@@ -97,11 +97,11 @@ public class StudentListAdapter extends BaseAdapter {
         String inTime_str = "";
         String outTime_str = "";
         if(inTime != null) {
-            inTime_str = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(inTime);
+            inTime_str = new SimpleDateFormat("dd/MM/yyyy hh:mm aa").format(inTime);
         }
 
         if(outTime != null) {
-            outTime_str = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(outTime);
+            outTime_str = new SimpleDateFormat("dd/MM/yyyy hh:mm aa").format(outTime);
         }
 
         holder.nameTextView.setText("" + studentLog.getName());
