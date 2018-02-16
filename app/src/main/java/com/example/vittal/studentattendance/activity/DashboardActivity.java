@@ -76,26 +76,26 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void initializeViews() {
-        headerLayout = (RelativeLayout)findViewById( R.id.headerLayout );
-        backImageView = (ImageView)findViewById( R.id.backImageView );
-        actionBarTitleTextView = (TextView)findViewById( R.id.actionBarTitleTextView );
-        searchImageView = (ImageView)findViewById( R.id.searchImageView );
-        logoutImageView = (ImageView)findViewById( R.id.logoutImageView );
-        contentLayout = (LinearLayout)findViewById( R.id.contentLayout );
-        searchLayout = (LinearLayout)findViewById( R.id.searchLayout );
-        searchInputLayout = (LinearLayout)findViewById( R.id.searchInputLayout );
-        searchStudentLayout = (LinearLayout)findViewById( R.id.searchStudentLayout );
-        searchStudentImageView = (ImageView)findViewById( R.id.searchStudentImageView );
-        searchStudentEditText = (EditText)findViewById( R.id.searchStudentEditText );
-        searchStartDateLayout = (LinearLayout)findViewById( R.id.searchStartDateLayout );
-        searchStartDateTextView = (TextView)findViewById( R.id.searchStartDateTextView );
-        searchStartDateImageView = (ImageView)findViewById( R.id.searchStartDateImageView );
-        searchEndDateLayout = (LinearLayout)findViewById( R.id.searchEndDateLayout );
-        searchEndDateTextView = (TextView)findViewById( R.id.searchEndDateTextView );
-        searchEndDateImageView = (ImageView)findViewById( R.id.searchEndDateImageView );
-        searchButtonLayout = (LinearLayout)findViewById( R.id.searchButtonLayout );
-        searchButtonImageView = (ImageView)findViewById( R.id.searchButtonImageView );
-        studentsListView = (ListView)findViewById( R.id.studentsListView );
+        headerLayout = (RelativeLayout) findViewById(R.id.headerLayout);
+        backImageView = (ImageView) findViewById(R.id.backImageView);
+        actionBarTitleTextView = (TextView) findViewById(R.id.actionBarTitleTextView);
+        searchImageView = (ImageView) findViewById(R.id.searchImageView);
+        logoutImageView = (ImageView) findViewById(R.id.logoutImageView);
+        contentLayout = (LinearLayout) findViewById(R.id.contentLayout);
+        searchLayout = (LinearLayout) findViewById(R.id.searchLayout);
+        searchInputLayout = (LinearLayout) findViewById(R.id.searchInputLayout);
+        searchStudentLayout = (LinearLayout) findViewById(R.id.searchStudentLayout);
+        searchStudentImageView = (ImageView) findViewById(R.id.searchStudentImageView);
+        searchStudentEditText = (EditText) findViewById(R.id.searchStudentEditText);
+        searchStartDateLayout = (LinearLayout) findViewById(R.id.searchStartDateLayout);
+        searchStartDateTextView = (TextView) findViewById(R.id.searchStartDateTextView);
+        searchStartDateImageView = (ImageView) findViewById(R.id.searchStartDateImageView);
+        searchEndDateLayout = (LinearLayout) findViewById(R.id.searchEndDateLayout);
+        searchEndDateTextView = (TextView) findViewById(R.id.searchEndDateTextView);
+        searchEndDateImageView = (ImageView) findViewById(R.id.searchEndDateImageView);
+        searchButtonLayout = (LinearLayout) findViewById(R.id.searchButtonLayout);
+        searchButtonImageView = (ImageView) findViewById(R.id.searchButtonImageView);
+        studentsListView = (ListView) findViewById(R.id.studentsListView);
     }
 
     private void setDynamicViews() {
@@ -119,19 +119,19 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         RelativeLayout.LayoutParams backImage = (RelativeLayout.LayoutParams) backImageView.getLayoutParams();
         backImage.width = backImageWidth;
         backImage.height = backImageWidth;
-        backImage.setMargins(backImageLeftMargin,0,backImageRightMargin,0);
+        backImage.setMargins(backImageLeftMargin, 0, backImageRightMargin, 0);
         backImageView.setLayoutParams(backImage);
 
         RelativeLayout.LayoutParams logoutImage = (RelativeLayout.LayoutParams) logoutImageView.getLayoutParams();
         logoutImage.width = logoutImageWidth;
         logoutImage.height = logoutImageWidth;
-        logoutImage.setMargins(0,0,backImageLeftMargin,0);
+        logoutImage.setMargins(0, 0, backImageLeftMargin, 0);
         logoutImageView.setLayoutParams(logoutImage);
 
         RelativeLayout.LayoutParams searchImage = (RelativeLayout.LayoutParams) searchImageView.getLayoutParams();
         searchImage.width = logoutImageWidth;
         searchImage.height = logoutImageWidth;
-        searchImage.setMargins(0,0,backImageLeftMargin,0);
+        searchImage.setMargins(0, 0, backImageLeftMargin, 0);
         searchImageView.setLayoutParams(searchImage);
 
         /*contentLayout.setPadding(contentLayLeftRightPadding,0,contentLayLeftRightPadding,0);
@@ -177,18 +177,17 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void defaultFunctionality() {
-        List<StudentLogJoined> studentLogList = SQLite.select(StudentModel_Table._id.as("user_id").withTable(), StudentModel_Table.name,StudentModel_Table.register_number,
-                                StudentModel_Table.system_number, LogModel_Table._id.as("log_id").withTable(),LogModel_Table.in_time,LogModel_Table.out_time)
-                                            .from(StudentModel.class)
-                                            .leftOuterJoin(LogModel.class)
-                                            .on(StudentModel_Table._id.withTable().eq(LogModel_Table.user_id.withTable()))
-                                            .orderBy(LogModel_Table._id.withTable(), false)
-                                            .queryCustomList(StudentLogJoined.class);
+        List<StudentLogJoined> studentLogList = SQLite.select(StudentModel_Table._id.as("user_id").withTable(), StudentModel_Table.name, StudentModel_Table.register_number,
+                StudentModel_Table.system_number, LogModel_Table._id.as("log_id").withTable(), LogModel_Table.in_time, LogModel_Table.out_time)
+                .from(StudentModel.class)
+                .leftOuterJoin(LogModel.class)
+                .on(StudentModel_Table._id.withTable().eq(LogModel_Table.user_id.withTable()))
+                .orderBy(LogModel_Table._id.withTable(), false)
+                .queryCustomList(StudentLogJoined.class);
 
-        if(studentLogList.size() > 0) {
-            adapter = new StudentListAdapter(this, studentLogList, width, height);
-            studentsListView.setAdapter(adapter);
-        }
+        adapter = new StudentListAdapter(this, studentLogList, width, height);
+        studentsListView.setAdapter(adapter);
+
     }
 
     private void makeSearchRequest() {
@@ -202,33 +201,33 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
             String temp_endDate = searchEndDateTextView.getText().toString();
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            if(!temp_startDate.equals(""))
+            if (!temp_startDate.equals(""))
                 startDate = sdf.parse(temp_startDate);
 
-            if(!temp_endDate.equals(""))
+            if (!temp_endDate.equals(""))
                 endDate = sdf.parse(temp_endDate);
 
             //condition
             OperatorGroup conditionGroup = OperatorGroup.clause();
-            if(searchQuery.length() > 0) {
+            if (searchQuery.length() > 0) {
                 conditionGroup.and((OperatorGroup.clause()
                         .and(StudentModel_Table.name.eq(searchQuery))
                         .or(StudentModel_Table.register_number.eq(searchQuery))
                         .or(StudentModel_Table.system_number.eq(searchQuery))));
             }
 
-            if(startDate != null) {
+            if (startDate != null) {
                 conditionGroup.and((OperatorGroup.clause()
                         .and(LogModel_Table.in_time.greaterThan(startDate))));
             }
 
-            if(endDate != null) {
+            if (endDate != null) {
                 conditionGroup.and((OperatorGroup.clause()
                         .and(LogModel_Table.in_time.lessThan(endDate))));
             }
 
-            studentLogList = SQLite.select(StudentModel_Table._id.as("user_id").withTable(), StudentModel_Table.name,StudentModel_Table.register_number,
-                    StudentModel_Table.system_number, LogModel_Table._id.as("log_id").withTable(),LogModel_Table.in_time,LogModel_Table.out_time)
+            studentLogList = SQLite.select(StudentModel_Table._id.as("user_id").withTable(), StudentModel_Table.name, StudentModel_Table.register_number,
+                    StudentModel_Table.system_number, LogModel_Table._id.as("log_id").withTable(), LogModel_Table.in_time, LogModel_Table.out_time)
                     .from(StudentModel.class)
                     .leftOuterJoin(LogModel.class)
                     .on(StudentModel_Table._id.withTable().eq(LogModel_Table.user_id.withTable()))
@@ -329,7 +328,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 onBackPressed();
                 break;
             case R.id.searchImageView:
-                if(searchLayout.getVisibility() == View.GONE) {
+                if (searchLayout.getVisibility() == View.GONE) {
                     searchLayout.setVisibility(View.VISIBLE);
                 } else {
                     searchLayout.setVisibility(View.GONE);
